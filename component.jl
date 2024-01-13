@@ -4,9 +4,15 @@ end
 
 model_state = State(0)
 
-function run()
-    model_state.times_called = model_state.times_called + 1
+function init()
+    model_state.times_called = 0
 end
+
+function run()
+    model_state.times_called += 1
+end
+
+init()
 
 run()
 run()

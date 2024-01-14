@@ -10,12 +10,5 @@ end
 
 function run()
     model_state.times_called += 1
+    println("model_state times_called: ", model_state.times_called)
 end
-
-init()
-
-run()
-run()
-run()
-
-println("model_state times_called: ", model_state.times_called)

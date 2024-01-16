@@ -8,6 +8,12 @@ LDLIBS   += $(shell $(JL_SHARE)/julia-config.jl --ldlibs)
 
 all: driver
 
+%.o : %.c
+	$(CC) -c $(CFLAGS) $<
+
+driver: driver.o
+	$(CC) $(LDFLAGS) $(LDLIBS) -o $@ $^
+
 .PHONY: all clean
 
 clean:

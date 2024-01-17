@@ -6,10 +6,13 @@ CXXFLAGS += $(shell $(JL_SHARE)/julia-config.jl --cflags)
 LDFLAGS  += $(shell $(JL_SHARE)/julia-config.jl --ldflags)
 LDLIBS   += $(shell $(JL_SHARE)/julia-config.jl --ldlibs)
 
-all: driver
+all: driver say_y.dylib
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) $<
+
+say_y.dylib: say_y.c
+	$(CC) -fPIC -dynamiclib -o say_y.dylib say_y.c
 
 driver: driver.o
 	$(CC) $(LDFLAGS) $(LDLIBS) -o $@ $^
@@ -18,3 +21,4 @@ driver: driver.o
 
 clean:
 	rm -f driver
+	rm -f *.o *.dylib

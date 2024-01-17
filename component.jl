@@ -11,4 +11,5 @@ end
 function run()
     model_state.times_called += 1
     println("model_state times_called: ", model_state.times_called)
+    @ccall "./say_y.dylib".say_y(model_state.times_called::Cint)::Cvoid
 end

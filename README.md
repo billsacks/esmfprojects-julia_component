@@ -2,6 +2,8 @@ To compile, simply run 'make'.
 
 To run, run the 'driver' executable.
 
+This requires that you have Julia installed. I have tested this on my Mac.
+
 This runs 10 iterations of the run loop; each time, a counter ("state variable") in Julia is incremented, and this counter's value is printed both from Julia and from C.
 
 The resulting output should look like this if successful:
